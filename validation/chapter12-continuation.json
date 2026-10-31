@@ -6,11 +6,18 @@
     "TD3"
   ],
   "continuation_profile": "full-from-sac",
-  "remaining_methods": [
-    "SAC",
-    "PPO"
-  ],
+  "remaining_methods": [],
   "original_settings_preserved": true,
   "user_notebook_modified": false,
-  "coverage_note": "The original run stopped before TD3 post-processing. These post-processing cells previously passed bounded execution; the continuation does not claim a new full execution of earlier cells."
+  "coverage_note": "The original run stopped before TD3 post-processing. These post-processing cells previously passed bounded execution; the continuation does not claim a new full execution of earlier cells.",
+  "status": "completed",
+  "completed_continuation_training_runs": 10,
+  "total_training_runs_completed": 20,
+  "continuation_execution_passed": true,
+  "continuation_media_verified": {
+    "pngs": 4,
+    "gif_references": 12,
+    "gif_frames_decoded": 1112
+  },
+  "learning_quality_note": "All five DDPG, TD3 and SAC final means met targets; all five PPO final means were below 200."
 }

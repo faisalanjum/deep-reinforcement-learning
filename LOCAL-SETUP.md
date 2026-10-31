@@ -35,9 +35,11 @@ To run a whole chapter with reduced training settings: `.venv-gdrl/bin/python va
 
 On 2026-10-31, the user manually confirmed video play/pause/replay and the saved chapter 12 Trial 1/Trial 2 animations in VS Code. Computer-use access remains denied. Kernel execution is tested automatically; kernel selection and restart controls in VS Code have not been manually confirmed.
 
-## Long validation currently running
+## Completed long validation
 
-The default-setting notebook runs for chapters 2–11 have completed on Python 3.11. Chapter 12 completed all five DDPG and five TD3 full training runs, then stopped at a standalone `stop` cell in the working notebook. SAC and PPO continue in a fresh kernel with their original settings. Chapter 7 also completed with its original settings on Python 3.14. A completed notebook execution does not guarantee that every random seed reaches its learning target; the report retains observed reward results, including a low A3C seed and its successful independent repeat.
+The default-setting notebook runs for chapters 2–11 have completed on Python 3.11. All 20 chapter 12 training runs have also completed. DDPG and TD3 ran before a standalone `stop` cell halted the working notebook; SAC and PPO completed in a fresh-kernel continuation with their original settings. DDPG, TD3 and SAC met their final reward targets on all five seeds. PPO completed without execution errors, but its final average rewards were 122.57–195.34 against a target of 200. Four PPO runs crossed the notebook's rolling stopping threshold, which did not guarantee the same score in the separate final evaluation.
+
+Chapter 7 also completed with its original settings on Python 3.14. Later-chapter Python 3.14 and MPS testing used reduced training settings, not full-length convergence tests. The report retains observed reward results, including a low A3C seed and its successful independent repeat. No validation training jobs remain running.
 
 The working chapter 12 notebook retains the standalone `stop` cell. Comment out or remove that cell before using Run All across the whole notebook. To validate just the remaining SAC/PPO sections without repeating DDPG/TD3, use `.venv-gdrl/bin/python validation/run_notebook.py 12 --profile full --from-section SAC --timeout 108000`. The continuation skips earlier training cells explicitly and does not modify the working notebook. Training arrays and executed outputs are saved after each training cell completes.
 

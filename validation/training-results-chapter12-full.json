@@ -98,5 +98,105 @@
     "wall_seconds": 3362.64,
     "goal_reward": 1500,
     "final_reward_at_least_goal": true
+  },
+  {
+    "method": "SAC",
+    "seed": 12,
+    "mean_reward": 2134.26,
+    "std_reward": 44.99,
+    "training_seconds": 1073.6,
+    "wall_seconds": 1164.64,
+    "goal_reward": 2000,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "SAC",
+    "seed": 34,
+    "mean_reward": 2324.46,
+    "std_reward": 36.52,
+    "training_seconds": 1008.46,
+    "wall_seconds": 1096.93,
+    "goal_reward": 2000,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "SAC",
+    "seed": 56,
+    "mean_reward": 2100.14,
+    "std_reward": 11.35,
+    "training_seconds": 2865.76,
+    "wall_seconds": 3032.0,
+    "goal_reward": 2000,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "SAC",
+    "seed": 78,
+    "mean_reward": 2137.2,
+    "std_reward": 86.74,
+    "training_seconds": 851.47,
+    "wall_seconds": 931.16,
+    "goal_reward": 2000,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "SAC",
+    "seed": 90,
+    "mean_reward": 2142.26,
+    "std_reward": 55.56,
+    "training_seconds": 1984.87,
+    "wall_seconds": 2115.76,
+    "goal_reward": 2000,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "PPO",
+    "seed": 12,
+    "mean_reward": 122.57,
+    "std_reward": 96.34,
+    "training_seconds": 1219.74,
+    "wall_seconds": 463.0,
+    "goal_reward": 200,
+    "final_reward_at_least_goal": false
+  },
+  {
+    "method": "PPO",
+    "seed": 34,
+    "mean_reward": 150.04,
+    "std_reward": 118.59,
+    "training_seconds": 989.78,
+    "wall_seconds": 329.26,
+    "goal_reward": 200,
+    "final_reward_at_least_goal": false
+  },
+  {
+    "method": "PPO",
+    "seed": 56,
+    "mean_reward": 172.67,
+    "std_reward": 92.85,
+    "training_seconds": 603.67,
+    "wall_seconds": 199.89,
+    "goal_reward": 200,
+    "final_reward_at_least_goal": false
+  },
+  {
+    "method": "PPO",
+    "seed": 78,
+    "mean_reward": 160.76,
+    "std_reward": 84.28,
+    "training_seconds": 1123.89,
+    "wall_seconds": 338.46,
+    "goal_reward": 200,
+    "final_reward_at_least_goal": false
+  },
+  {
+    "method": "PPO",
+    "seed": 90,
+    "mean_reward": 195.34,
+    "std_reward": 67.15,
+    "training_seconds": 1060.49,
+    "wall_seconds": 353.73,
+    "goal_reward": 200,
+    "final_reward_at_least_goal": false
   }
 ]

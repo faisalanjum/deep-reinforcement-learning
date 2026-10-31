@@ -34,13 +34,15 @@ def main():
             lines.append(f'| {profile} | {row["chapter"]} | {row["status"]} | {row["current_cell"]} | {row["pngs"]} | {row["gifs"]} |')
     continuation = ROOT/'validation/chapter12-continuation.json'
     if continuation.exists():
-        lines.extend(['', 'Chapter 12 completed all five DDPG and five TD3 full training runs, then stopped at a notebook cell containing only `stop` (`NameError`). The user notebook is preserved. The `full-from-sac` profile continues SAC and PPO with their original settings in a fresh kernel; earlier training cells are explicitly skipped. A continuation pass is not a fresh execution of the whole notebook.'])
+        lines.extend(['', 'Chapter 12 completed all five DDPG and five TD3 full training runs, then stopped at a notebook cell containing only `stop` (`NameError`). The user notebook is preserved. The `full-from-sac` profile runs SAC and PPO with their original settings in a fresh kernel; earlier training cells are explicitly skipped. A continuation pass is not a fresh execution of the whole notebook.'])
         continued = ROOT/'validation/notebook-runs/full-from-sac/chapter_12/status.json'
         if continued.exists():
             progress = read_status(continued)
             if progress:
                 total = 10 + progress.get('training_runs_completed', 0)
                 lines.extend(['', f'Chapter 12 full training runs completed across the original run and continuation: **{total}/20**.'])
+                if progress.get('status') == 'passed':
+                    lines.extend(['', 'The SAC/PPO continuation completed successfully, including its training, post-processing and media cells. The original whole-notebook entry remains failed as a historical record of the `stop` cell.'])
     lines.extend(['','## Media checks',''])
     for filename in sorted((ROOT/'validation').glob('media-python*.json')):
         rows=json.loads(filename.read_text());lines.append(f'- {filename.stem}: {len(rows)} repeated environment checks passed, recording and decoding two videos per check and generating GIFs.')
@@ -55,6 +57,12 @@ def main():
                 rows=json.loads(filename.read_text())
                 reached=sum(row.get('final_reward_at_least_goal') is True for row in rows)
                 lines.append(f'- {label}: {reached}/{len(rows)} recorded runs finished at or above their configured final evaluation reward targets.')
+                if label.startswith('Chapter 12'):
+                    for method in dict.fromkeys(row['method'] for row in rows):
+                        scores=', '.join(f"{row['mean_reward']:g}" for row in rows if row['method']==method)
+                        lines.append(f'  - {method} final mean rewards: {scores}.')
+                    if any(row['method']=='PPO' for row in rows):
+                        lines.extend(['', 'PPO completed all five full training runs without execution errors, but its final mean rewards were below 200. Four runs crossed the book\'s rolling stopping threshold; final evaluation over 100 separate episodes scored lower. These results establish execution coverage, not reliable achievement of the PPO reward target.'])
     chapter11_results = ROOT/'validation/training-results-chapter11-full.json'
     if chapter11_results.exists():
         rows = json.loads(chapter11_results.read_text())
@@ -73,7 +81,11 @@ def main():
                   '- Python 3.11 MPS forward/backward and short training tests passed for chapters 8–10 and the four chapter 12 methods. Shared-model A3C/GAE/A2C use CPU.',
                   '- Every emitted PNG and GIF in the executed notebook reports was decoded and checked; this verifies the media artifacts, not numerical convergence.',
                   '- On 2026-10-31, the user manually confirmed video play/pause/replay and the saved chapter 12 Trial 1/Trial 2 animations in VS Code. Computer-use access remains denied; kernel selection and restart controls have not been manually confirmed.',
-                  '', 'The live per-chapter files are under `validation/notebook-runs/*/chapter_*/status.json`. Default training can run for hours; a running entry is not a pass.',''])
+                  '', '## Coverage limitations', '',
+                  '- The working chapter 12 notebook retains its standalone `stop` cell; remove or comment it before Run All. TD3 post-processing after that cell was previously verified with reduced settings, but was not reached in the original full run.',
+                  '- Full-length later-chapter training was verified on Python 3.11. Python 3.14 chapters 8–12 and MPS were checked with reduced training runs.',
+                  '- Learning scores vary. PPO final rewards remain below its target, and some chapter 11 seeds also fell below their targets.',
+                  '', 'The per-chapter files are under `validation/notebook-runs/*/chapter_*/status.json`. A passed execution is not a guarantee of convergence.',''])
     output='\n'.join(lines);(ROOT/'VALIDATION-REPORT.md').write_text(output);print(output)
 
 
