@@ -1,6 +1,6 @@
 # Validation report
 
-Updated 2026-10-31T16:25:47+00:00.
+Updated 2026-10-31T17:20:00+00:00.
 
 The tables distinguish completed notebook execution from ongoing default-setting training. “Bounded” executes every cell with one seed, eight training episodes, two workers and smaller batches; it does not establish convergence. Chapters 2–7 retain their original training settings.
 
@@ -38,12 +38,17 @@ The tables distinguish completed notebook execution from ongoing default-setting
 
 Chapter 12 completed all five DDPG and five TD3 full training runs, then stopped at a notebook cell containing only `stop` (`NameError`). The user notebook is preserved. The `full-from-sac` profile continues SAC and PPO with their original settings in a fresh kernel; earlier training cells are explicitly skipped. A continuation pass is not a fresh execution of the whole notebook.
 
-Chapter 12 full training runs completed across the original run and continuation: **10/20**.
+Chapter 12 full training runs completed across the original run and continuation: **12/20**.
 
 ## Media checks
 
 - media-python311: 15 repeated environment checks passed, recording and decoding two videos per check and generating GIFs.
 - media-python314: 15 repeated environment checks passed, recording and decoding two videos per check and generating GIFs.
+
+## Completed training score review
+
+- Chapters 8–10: 25/25 recorded runs finished at or above their configured final evaluation reward targets.
+- Chapter 12 completed methods: 10/10 recorded runs finished at or above their configured final evaluation reward targets.
 
 ## Chapter 11 learning results
 

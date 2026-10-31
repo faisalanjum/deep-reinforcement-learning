@@ -44,6 +44,17 @@ def main():
     lines.extend(['','## Media checks',''])
     for filename in sorted((ROOT/'validation').glob('media-python*.json')):
         rows=json.loads(filename.read_text());lines.append(f'- {filename.stem}: {len(rows)} repeated environment checks passed, recording and decoding two videos per check and generating GIFs.')
+    score_reviews = (
+        ('Chapters 8–10', ROOT/'validation/training-results-chapters8-10-full.json'),
+        ('Chapter 12 completed methods', ROOT/'validation/training-results-chapter12-full.json'),
+    )
+    if any(filename.exists() for _, filename in score_reviews):
+        lines.extend(['', '## Completed training score review', ''])
+        for label, filename in score_reviews:
+            if filename.exists():
+                rows=json.loads(filename.read_text())
+                reached=sum(row.get('final_reward_at_least_goal') is True for row in rows)
+                lines.append(f'- {label}: {reached}/{len(rows)} recorded runs finished at or above their configured final evaluation reward targets.')
     chapter11_results = ROOT/'validation/training-results-chapter11-full.json'
     if chapter11_results.exists():
         rows = json.loads(chapter11_results.read_text())
