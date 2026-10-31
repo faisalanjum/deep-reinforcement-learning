@@ -1,0 +1,42 @@
+[
+  {
+    "chapter": 11,
+    "cell": 14,
+    "device": "cpu",
+    "exit": 0,
+    "seconds": 3.88,
+    "log": "validation/train-11-14-cpu.log"
+  },
+  {
+    "chapter": 11,
+    "cell": 24,
+    "device": "cpu",
+    "exit": 0,
+    "seconds": 3.89,
+    "log": "validation/train-11-24-cpu.log"
+  },
+  {
+    "chapter": 11,
+    "cell": 34,
+    "device": "cpu",
+    "exit": 0,
+    "seconds": 5.92,
+    "log": "validation/train-11-34-cpu.log"
+  },
+  {
+    "chapter": 11,
+    "cell": 42,
+    "device": "cpu",
+    "exit": 0,
+    "seconds": 5.93,
+    "log": "validation/train-11-42-cpu.log"
+  },
+  {
+    "chapter": 11,
+    "cell": 52,
+    "device": "cpu",
+    "exit": 0,
+    "seconds": 4.02,
+    "log": "validation/train-11-52-cpu.log"
+  }
+]

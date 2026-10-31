@@ -1,0 +1,10 @@
+[
+  {
+    "chapter": 8,
+    "cell": 14,
+    "device": "mps",
+    "exit": 0,
+    "seconds": 7.07,
+    "log": "validation/train-8-14-mps.log"
+  }
+]

@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=80,<81"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "drl-book-local"
+version = "0.1.0"
+description = "Local macOS support for the downloaded GDRL notebooks"
+requires-python = ">=3.11"
+
+[tool.setuptools.packages.find]
+include = ["drl_book*"]

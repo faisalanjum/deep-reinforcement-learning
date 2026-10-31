@@ -1,0 +1,22 @@
+./wheels/gym-0.15.4+gdrl.2-py3-none-any.whl
+./wheels/pyglet-1.5.31+gdrl.1-py3-none-any.whl
+-e .
+ipykernel
+nbclient
+ipywidgets
+numpy
+scipy
+matplotlib
+tqdm
+tabulate
+torch
+scikit-image
+opencv-python
+setuptools==80.9.0
+swig
+box2d-py
+pybullet==3.2.7
+pip
+gym-walk @ git+https://github.com/mimoralea/gym-walk.git@4f7e1812389c45330eeeeb0b32a604d022fd7b89
+gym-aima @ git+https://github.com/mimoralea/gym-aima.git@0298dab3a303335bd2e5f0b3fd7fddd5a8568d00
+gym-bandits @ git+https://github.com/mimoralea/gym-bandits.git@f4b45d39e59eee3f6377ceb42466749af2cd77bd

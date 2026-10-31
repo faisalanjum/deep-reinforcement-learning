@@ -1,0 +1,18 @@
+[
+  {
+    "chapter": 10,
+    "cell": 18,
+    "device": "mps",
+    "exit": 0,
+    "seconds": 4.66,
+    "log": "validation/train-10-18-mps.log"
+  },
+  {
+    "chapter": 10,
+    "cell": 46,
+    "device": "mps",
+    "exit": 0,
+    "seconds": 5.55,
+    "log": "validation/train-10-46-mps.log"
+  }
+]

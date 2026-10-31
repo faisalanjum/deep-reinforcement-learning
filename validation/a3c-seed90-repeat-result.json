@@ -1,0 +1,13 @@
+{
+  "chapter": 11,
+  "cell": 34,
+  "profile": "full",
+  "seed": 90,
+  "device": "cpu",
+  "execution": "passed",
+  "final_eval_score": 500.0,
+  "training_seconds": 116.34581756591797,
+  "wallclock_seconds": 17.69061303138733,
+  "original_run_final_eval_score": 9.27,
+  "settings_changed": false
+}

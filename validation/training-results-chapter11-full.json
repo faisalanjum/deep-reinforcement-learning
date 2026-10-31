@@ -1,0 +1,252 @@
+[
+  {
+    "method": "REINFORCE",
+    "seed": 12,
+    "mean_reward": 461.16,
+    "std_reward": 62.16,
+    "training_seconds": 79.77,
+    "wall_seconds": 89.06,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": false
+  },
+  {
+    "method": "REINFORCE",
+    "seed": 34,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 91.26,
+    "wall_seconds": 99.97,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "REINFORCE",
+    "seed": 56,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 81.07,
+    "wall_seconds": 89.15,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "REINFORCE",
+    "seed": 78,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 87.54,
+    "wall_seconds": 96.06,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "REINFORCE",
+    "seed": 90,
+    "mean_reward": 494.4,
+    "std_reward": 21.92,
+    "training_seconds": 63.28,
+    "wall_seconds": 69.38,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "VPG",
+    "seed": 12,
+    "mean_reward": 395.7,
+    "std_reward": 77.79,
+    "training_seconds": 34.19,
+    "wall_seconds": 37.81,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": false
+  },
+  {
+    "method": "VPG",
+    "seed": 34,
+    "mean_reward": 498.67,
+    "std_reward": 9.36,
+    "training_seconds": 36.69,
+    "wall_seconds": 42.1,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "VPG",
+    "seed": 56,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 31.58,
+    "wall_seconds": 35.45,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "VPG",
+    "seed": 78,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 35.09,
+    "wall_seconds": 38.92,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "VPG",
+    "seed": 90,
+    "mean_reward": 492.68,
+    "std_reward": 25.23,
+    "training_seconds": 25.24,
+    "wall_seconds": 28.4,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "A3C",
+    "seed": 12,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 108.69,
+    "wall_seconds": 20.34,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "A3C",
+    "seed": 34,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 149.12,
+    "wall_seconds": 23.37,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "A3C",
+    "seed": 56,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 294.54,
+    "wall_seconds": 44.04,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "A3C",
+    "seed": 78,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 510.31,
+    "wall_seconds": 77.76,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "A3C",
+    "seed": 90,
+    "mean_reward": 9.27,
+    "std_reward": 0.75,
+    "training_seconds": 816.95,
+    "wall_seconds": 120.85,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": false
+  },
+  {
+    "method": "GAE",
+    "seed": 12,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 95.55,
+    "wall_seconds": 15.34,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "GAE",
+    "seed": 34,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 69.37,
+    "wall_seconds": 11.57,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "GAE",
+    "seed": 56,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 91.07,
+    "wall_seconds": 14.46,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "GAE",
+    "seed": 78,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 69.48,
+    "wall_seconds": 11.49,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "GAE",
+    "seed": 90,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 68.64,
+    "wall_seconds": 11.46,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "A2C",
+    "seed": 12,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 116.45,
+    "wall_seconds": 18.11,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "A2C",
+    "seed": 34,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 76.83,
+    "wall_seconds": 12.96,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "A2C",
+    "seed": 56,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 79.64,
+    "wall_seconds": 13.3,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "A2C",
+    "seed": 78,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 77.73,
+    "wall_seconds": 13.0,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "A2C",
+    "seed": 90,
+    "mean_reward": 500.0,
+    "std_reward": 0.0,
+    "training_seconds": 68.32,
+    "wall_seconds": 11.74,
+    "goal_reward": 475,
+    "final_reward_at_least_goal": true
+  }
+]
