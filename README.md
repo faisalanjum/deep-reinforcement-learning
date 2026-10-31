@@ -2,7 +2,7 @@
 
 This copy includes local macOS compatibility editions of the book's notebooks. Start with [LOCAL-SETUP.md](LOCAL-SETUP.md), select **GDRL (Python 3.11)** in VS Code, and use the `chapter-XX-local.ipynb` notebooks. The original notebooks and their license are retained.
 
-Full notebook execution has completed for chapters 2–11 on Python 3.11. Chapter 12's full training run is still in progress. See [VALIDATION-REPORT.md](VALIDATION-REPORT.md) for the recorded test coverage, learning results and remaining work; successful execution does not guarantee convergence for every random seed.
+Full notebook execution has completed for chapters 2–11 on Python 3.11. Chapter 12 completed its five DDPG and five TD3 full training runs, then stopped at a standalone `stop` cell in the working notebook. SAC and PPO are being validated separately with their original settings. See [VALIDATION-REPORT.md](VALIDATION-REPORT.md) for the recorded test coverage, learning results and remaining work; successful execution does not guarantee convergence for every random seed.
 
 The author's original Docker instructions follow.
 

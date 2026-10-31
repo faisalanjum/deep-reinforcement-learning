@@ -1,0 +1,102 @@
+[
+  {
+    "method": "DDPG",
+    "seed": 12,
+    "mean_reward": -130.96,
+    "std_reward": 76.95,
+    "training_seconds": 47.95,
+    "wall_seconds": 51.21,
+    "goal_reward": -150,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "DDPG",
+    "seed": 34,
+    "mean_reward": -148.54,
+    "std_reward": 80.22,
+    "training_seconds": 48.38,
+    "wall_seconds": 50.31,
+    "goal_reward": -150,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "DDPG",
+    "seed": 56,
+    "mean_reward": -135.71,
+    "std_reward": 77.9,
+    "training_seconds": 129.96,
+    "wall_seconds": 133.6,
+    "goal_reward": -150,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "DDPG",
+    "seed": 78,
+    "mean_reward": -149.41,
+    "std_reward": 80.35,
+    "training_seconds": 48.42,
+    "wall_seconds": 50.33,
+    "goal_reward": -150,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "DDPG",
+    "seed": 90,
+    "mean_reward": -144.1,
+    "std_reward": 82.98,
+    "training_seconds": 47.16,
+    "wall_seconds": 49.06,
+    "goal_reward": -150,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "TD3",
+    "seed": 12,
+    "mean_reward": 2057.51,
+    "std_reward": 28.91,
+    "training_seconds": 653.46,
+    "wall_seconds": 733.07,
+    "goal_reward": 1500,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "TD3",
+    "seed": 34,
+    "mean_reward": 1792.77,
+    "std_reward": 69.11,
+    "training_seconds": 268.56,
+    "wall_seconds": 319.63,
+    "goal_reward": 1500,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "TD3",
+    "seed": 56,
+    "mean_reward": 2091.47,
+    "std_reward": 18.15,
+    "training_seconds": 310.59,
+    "wall_seconds": 365.58,
+    "goal_reward": 1500,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "TD3",
+    "seed": 78,
+    "mean_reward": 1936.23,
+    "std_reward": 41.55,
+    "training_seconds": 478.23,
+    "wall_seconds": 538.18,
+    "goal_reward": 1500,
+    "final_reward_at_least_goal": true
+  },
+  {
+    "method": "TD3",
+    "seed": 90,
+    "mean_reward": 1930.52,
+    "std_reward": 23.97,
+    "training_seconds": 3218.75,
+    "wall_seconds": 3362.64,
+    "goal_reward": 1500,
+    "final_reward_at_least_goal": true
+  }
+]

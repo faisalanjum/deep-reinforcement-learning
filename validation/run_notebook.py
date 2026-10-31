@@ -33,30 +33,49 @@ def main():
     parser.add_argument('--profile',choices=('bounded','full'),default='bounded')
     parser.add_argument('--timeout',type=int,default=600)
     parser.add_argument('--python-kernel',default='gdrl-python311')
+    parser.add_argument('--from-section', choices=('SAC', 'PPO'),
+                        help='Continue chapter 12 from this section in a fresh kernel.')
     args=parser.parse_args()
+    if args.from_section and args.chapter != 12:
+        parser.error('--from-section is only supported for chapter 12')
     suffix='-local'
     source=ROOT/'notebooks'/f'chapter_{args.chapter:02}'/f'chapter-{args.chapter:02}{suffix}.ipynb'
     notebook=nbformat.read(source,as_version=4)
     notebook.metadata.kernelspec = {'name':args.python_kernel,'language':'python','display_name':'GDRL (Python 3.14 - compatibility tests)' if args.python_kernel=='gdrl-python314' else 'GDRL (Python 3.11)'}
     version_tag = '-py314' if args.python_kernel == 'gdrl-python314' else ''
-    workspace=ROOT/'validation/notebook-runs'/(args.profile + version_tag)
+    section_tag = f'-from-{args.from_section.lower()}' if args.from_section else ''
+    workspace=ROOT/'validation/notebook-runs'/(args.profile + version_tag + section_tag)
     cwd=workspace/f'chapter_{args.chapter:02}';cwd.mkdir(parents=True,exist_ok=True)
     results=workspace/'results'
     if not results.exists():shutil.copytree(ROOT/'notebooks/results',results)
     # macOS Unix-domain sockets (including torch_shm_manager) require short paths.
-    temporary=Path('/tmp/gdrl-v')/(args.profile + ('-py314' if args.python_kernel=='gdrl-python314' else ''))/f'ch{args.chapter:02}'
+    temporary=Path('/tmp/gdrl-v')/(args.profile + version_tag + section_tag)/f'ch{args.chapter:02}'
     temporary.mkdir(parents=True,exist_ok=True)
     kernel_environment=os.environ.copy(); kernel_environment['TMPDIR']=str(temporary)
     output=cwd/source.name
     status={'chapter':args.chapter,'profile':args.profile,'kernel':args.python_kernel,'completed_cells':[],'pngs':0,'gifs':0,'videos':0,'status':'running'}
+    section_start = None
+    if args.from_section:
+        section_start = next(index for index, cell in enumerate(notebook.cells)
+                             if cell.cell_type == 'markdown' and cell.source.strip() == f'# {args.from_section}')
+        status.update(from_section=args.from_section, skipped_cells=[])
     started=time.monotonic()
-    for cell in notebook.cells:
+    for index, cell in enumerate(notebook.cells):
         if cell.cell_type=='code':
             cell.outputs=[];cell.execution_count=None
             if args.profile=='bounded' and args.chapter>=8:cell.source=bounded(cell.source)
+            if section_start is not None and index < section_start and index > 4 and not cell.source.startswith('from drl_book.'):
+                cell.metadata.setdefault('tags', []).append('validation-skip')
+                status['skipped_cells'].append(index)
+            # Preserve completed training arrays even if a later display cell fails.
+            for match in re.finditer(r'(?m)^(\w+)_results = np\.array\(\1_results\)', cell.source):
+                method = match.group(1)
+                cell.source += f'\nnp.save("training-results-{method}.npy", {method}_results)\n'
     def persist():
         status['seconds']=round(time.monotonic()-started,2)
-        (cwd/'status.json').write_text(json.dumps(status,indent=2)+'\n')
+        pending=cwd/'status.json.tmp'
+        pending.write_text(json.dumps(status,indent=2)+'\n')
+        pending.replace(cwd/'status.json')
     def begin(cell,cell_index,**kwargs):
         status['current_cell']=cell_index;persist();print('START',cell_index,flush=True)
     def completed(cell,cell_index,**kwargs):
@@ -74,6 +93,7 @@ def main():
                 status['gifs']+=1
             status['videos']+=html.count('<video')
         status['completed_cells'].append(cell_index);persist();print('DONE',cell_index,flush=True)
+        nbformat.write(notebook,output)
     class ProgressClient(NotebookClient):
         last_progress_write = 0.0
         def process_message(self, message, cell, cell_index):
@@ -89,7 +109,7 @@ def main():
                         persist(); self.last_progress_write = time.monotonic()
             return result
     try:
-        ProgressClient(notebook,timeout=args.timeout,kernel_name=args.python_kernel,on_cell_start=begin,on_cell_executed=completed,resources={'metadata':{'path':str(cwd)}}).execute(env=kernel_environment)
+        ProgressClient(notebook,timeout=args.timeout,kernel_name=args.python_kernel,skip_cells_with_tag='validation-skip',on_cell_start=begin,on_cell_executed=completed,resources={'metadata':{'path':str(cwd)}}).execute(env=kernel_environment)
         status['status']='passed'
     except BaseException as error:
         status['status']='failed';status['error']=f'{type(error).__name__}: {error}'

@@ -1,6 +1,6 @@
 # Validation report
 
-Updated 2026-10-31T14:32:03+00:00.
+Updated 2026-10-31T16:25:47+00:00.
 
 The tables distinguish completed notebook execution from ongoing default-setting training. “Bounded” executes every cell with one seed, eight training episodes, two workers and smaller batches; it does not establish convergence. Chapters 2–7 retain their original training settings.
 
@@ -16,12 +16,14 @@ The tables distinguish completed notebook execution from ongoing default-setting
 | full | 9 | passed | 52 | 14 | 16 |
 | full | 10 | passed | 51 | 12 | 16 |
 | full | 11 | passed | 57 | 6 | 40 |
-| full | 12 | running | 28 | 3 | 6 |
+| full | 12 | failed | 31 | 3 | 12 |
+| full-from-sac | 12 | running | 40 | 0 | 0 |
 | bounded | 8 | passed | 19 | 1 | 8 |
 | bounded | 9 | passed | 52 | 14 | 16 |
 | bounded | 10 | passed | 51 | 12 | 16 |
 | bounded | 11 | passed | 57 | 6 | 40 |
 | bounded | 12 | passed | 58 | 9 | 24 |
+| bounded-from-sac | 12 | passed | 59 | 4 | 12 |
 | bounded-py314 | 2 | passed | 8 | 0 | 0 |
 | bounded-py314 | 3 | passed | 71 | 0 | 0 |
 | bounded-py314 | 4 | passed | 34 | 4 | 0 |
@@ -33,6 +35,10 @@ The tables distinguish completed notebook execution from ongoing default-setting
 | bounded-py314 | 11 | passed | 57 | 6 | 40 |
 | bounded-py314 | 12 | passed | 58 | 9 | 24 |
 | full-py314 | 7 | passed | 214 | 86 | 0 |
+
+Chapter 12 completed all five DDPG and five TD3 full training runs, then stopped at a notebook cell containing only `stop` (`NameError`). The user notebook is preserved. The `full-from-sac` profile continues SAC and PPO with their original settings in a fresh kernel; earlier training cells are explicitly skipped. A continuation pass is not a fresh execution of the whole notebook.
+
+Chapter 12 full training runs completed across the original run and continuation: **10/20**.
 
 ## Media checks
 

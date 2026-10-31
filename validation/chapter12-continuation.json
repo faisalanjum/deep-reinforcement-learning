@@ -1,0 +1,16 @@
+{
+  "reason": "Original full run stopped at a standalone stop cell added to the local notebook, raising NameError.",
+  "completed_original_training_runs": 10,
+  "completed_methods": [
+    "DDPG",
+    "TD3"
+  ],
+  "continuation_profile": "full-from-sac",
+  "remaining_methods": [
+    "SAC",
+    "PPO"
+  ],
+  "original_settings_preserved": true,
+  "user_notebook_modified": false,
+  "coverage_note": "The original run stopped before TD3 post-processing. These post-processing cells previously passed bounded execution; the continuation does not claim a new full execution of earlier cells."
+}

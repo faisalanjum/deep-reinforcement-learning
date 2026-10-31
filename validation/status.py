@@ -24,7 +24,7 @@ def main():
            'The tables distinguish completed notebook execution from ongoing default-setting training. “Bounded” executes every cell with one seed, eight training episodes, two workers and smaller batches; it does not establish convergence. Chapters 2–7 retain their original training settings.','',
            '| Environment / profile | Chapter | State | Last cell | PNG outputs | GIF outputs |',
            '|---|---:|---|---:|---:|---:|']
-    for profile in ('full','bounded','bounded-py314','full-py314'):
+    for profile in ('full','full-from-sac','full-from-ppo','bounded','bounded-from-sac','bounded-py314','full-py314'):
         for filename in sorted((ROOT/'validation/notebook-runs'/profile).glob('chapter_*/status.json')):
             row=read_status(filename)
             if row is None:
@@ -32,6 +32,15 @@ def main():
                 lines.append(f'| {profile} | {chapter} | status temporarily unavailable | — | — | — |')
                 continue
             lines.append(f'| {profile} | {row["chapter"]} | {row["status"]} | {row["current_cell"]} | {row["pngs"]} | {row["gifs"]} |')
+    continuation = ROOT/'validation/chapter12-continuation.json'
+    if continuation.exists():
+        lines.extend(['', 'Chapter 12 completed all five DDPG and five TD3 full training runs, then stopped at a notebook cell containing only `stop` (`NameError`). The user notebook is preserved. The `full-from-sac` profile continues SAC and PPO with their original settings in a fresh kernel; earlier training cells are explicitly skipped. A continuation pass is not a fresh execution of the whole notebook.'])
+        continued = ROOT/'validation/notebook-runs/full-from-sac/chapter_12/status.json'
+        if continued.exists():
+            progress = read_status(continued)
+            if progress:
+                total = 10 + progress.get('training_runs_completed', 0)
+                lines.extend(['', f'Chapter 12 full training runs completed across the original run and continuation: **{total}/20**.'])
     lines.extend(['','## Media checks',''])
     for filename in sorted((ROOT/'validation').glob('media-python*.json')):
         rows=json.loads(filename.read_text());lines.append(f'- {filename.stem}: {len(rows)} repeated environment checks passed, recording and decoding two videos per check and generating GIFs.')
