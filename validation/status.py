@@ -2,8 +2,21 @@
 from datetime import datetime, timezone
 import json
 from pathlib import Path
+import time
 
 ROOT=Path(__file__).resolve().parents[1]
+
+
+def read_status(filename):
+    # Existing running jobs truncate and rewrite their JSON status files.
+    # Retry a concurrent read rather than stopping the report/disk monitor.
+    for attempt in range(5):
+        try:
+            return json.loads(filename.read_text())
+        except (json.JSONDecodeError, OSError):
+            if attempt < 4:
+                time.sleep(0.02)
+    return None
 
 
 def main():
@@ -13,7 +26,11 @@ def main():
            '|---|---:|---|---:|---:|---:|']
     for profile in ('full','bounded','bounded-py314','full-py314'):
         for filename in sorted((ROOT/'validation/notebook-runs'/profile).glob('chapter_*/status.json')):
-            row=json.loads(filename.read_text())
+            row=read_status(filename)
+            if row is None:
+                chapter=filename.parent.name.removeprefix('chapter_')
+                lines.append(f'| {profile} | {chapter} | status temporarily unavailable | — | — | — |')
+                continue
             lines.append(f'| {profile} | {row["chapter"]} | {row["status"]} | {row["current_cell"]} | {row["pngs"]} | {row["gifs"]} |')
     lines.extend(['','## Media checks',''])
     for filename in sorted((ROOT/'validation').glob('media-python*.json')):

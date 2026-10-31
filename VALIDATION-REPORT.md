@@ -1,6 +1,6 @@
 # Validation report
 
-Updated 2026-10-31T13:56:35+00:00.
+Updated 2026-10-31T14:32:03+00:00.
 
 The tables distinguish completed notebook execution from ongoing default-setting training. “Bounded” executes every cell with one seed, eight training episodes, two workers and smaller batches; it does not establish convergence. Chapters 2–7 retain their original training settings.
 
